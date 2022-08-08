@@ -15,10 +15,6 @@ class RestaurantAdapter(private val viewModel: RestaurantViewModel):
     var restaurant: List<Restaurant> = emptyList()
         set(value) {
             field = value
-            // For an extra challenge, update this to use the paging library.
-
-            // Notify any registered observers that the data set has changed. This will cause every
-            // element in our RecyclerView to be invalidated.
             notifyDataSetChanged()
         }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
