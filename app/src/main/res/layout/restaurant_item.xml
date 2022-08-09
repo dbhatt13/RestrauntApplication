@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.restrauntapplication.view.RestaurantViewModel" />
+            type="com.example.restrauntapplication.viewModel.RestaurantViewModel" />
         <variable
             name="data"
             type="com.example.restrauntapplication.data.Restaurant" />

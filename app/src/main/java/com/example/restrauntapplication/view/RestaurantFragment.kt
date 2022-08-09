@@ -9,13 +9,18 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.restrauntapplication.R
 import com.example.restrauntapplication.RestaurantApplication
+import com.example.restrauntapplication.viewModel.RestaurantViewModel
 import com.example.restrauntapplication.data.Restaurant
 import com.example.restrauntapplication.databinding.FragmentRestrauntBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 
@@ -29,20 +34,21 @@ class RestaurantFragment : Fragment() {
 
     private lateinit var listAdapter: RestaurantAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private var searchJob: Job? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         Timber.w("onCreateView")
         viewBinding = FragmentRestrauntBinding.inflate(inflater, container, false).apply {
             model = viewModel
         }
-        viewBinding.lifecycleOwner=this.viewLifecycleOwner
-        viewBinding.searchview.clearFocus()
+        if(::viewBinding.isInitialized) {
+            viewBinding.lifecycleOwner = this.viewLifecycleOwner
+            viewBinding.searchview.clearFocus()
+        }
         setUpRecyclerView()
         setUpSearchListener()
 
@@ -58,42 +64,58 @@ class RestaurantFragment : Fragment() {
                 return false
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                filterList(newText)
+            override fun onQueryTextChange(newText: String): Boolean {
+                searchJob?.cancel()
+                searchJob = viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main){
+                    delay(400)
+                    filterList(newText)
+                }
                 return true
             }
 
+        })
+
+        viewBinding.searchview.setOnCloseListener(SearchView.OnCloseListener {
+            if (::listAdapter.isInitialized)
+                listAdapter.restaurant = emptyList()
+            else
+                Timber.w("listAdapter not initialized")
+            return@OnCloseListener true
         })
     }
 
     private fun setUpRecyclerView() {
         Timber.w("setUpRecyclerView")
         val viewModel = viewBinding.model
-        if (viewModel != null) {
+        if (viewModel != null && ::viewBinding.isInitialized) {
             listAdapter = RestaurantAdapter(viewModel)
             viewBinding.restaurantList.adapter = listAdapter
-            listAdapter.restaurant = viewModel._items.value!!
             val decorator = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
             decorator.setDrawable(activity?.let { ContextCompat.getDrawable(it.applicationContext, R.drawable.line_divider) }!!)
             viewBinding.restaurantList.addItemDecoration(
                 decorator
             )
         } else {
-            Timber.w("ViewModel not initialized ")
+            Timber.e("ViewModel not initialized ")
         }
     }
 
-    fun filterList(newText: String?) {
-
+     fun filterList(newText: String) {
+        if(newText.isEmpty() &&::listAdapter.isInitialized){
+            listAdapter.restaurant = emptyList()
+            return
+        }
         val filterList = mutableListOf<Restaurant>()
         for(item in viewModel._items.value!!){
-            if(item.name.contains(newText.toString(),true)||
-                item.cuisine_type.contains(newText.toString(),true))
+            if(item.name.contains(newText,true)||
+                item.cuisine_type.contains(newText,true))
                 filterList.add(item)
         }
-        if(filterList.isEmpty())
-            Toast.makeText(context,"No Result",Toast.LENGTH_SHORT).show()
-        else
+        if(filterList.isEmpty()) {
+            if (::listAdapter.isInitialized)
+                listAdapter.restaurant = emptyList()
+            Toast.makeText(context, "No Result", Toast.LENGTH_SHORT).show()
+        }else
             listAdapter.restaurant=filterList
 
     }

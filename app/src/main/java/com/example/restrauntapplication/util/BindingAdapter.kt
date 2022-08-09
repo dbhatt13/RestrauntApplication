@@ -1,4 +1,4 @@
-package com.example.restrauntapplication.view.Util
+package com.example.restrauntapplication.util
 
 import android.graphics.drawable.Drawable
 import android.widget.ImageView

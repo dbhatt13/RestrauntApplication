@@ -1,8 +1,12 @@
-package com.example.restrauntapplication.data
+package com.example.restrauntapplication.network
 
 import androidx.lifecycle.MutableLiveData
+import com.example.restrauntapplication.data.Latlng
+import com.example.restrauntapplication.data.OperatingHours
+import com.example.restrauntapplication.data.Restaurant
+import com.example.restrauntapplication.data.Review
 
-class RemoteDatabase {
+class RemoteService {
 
     fun getData(): MutableLiveData<List<Restaurant>> {
 
@@ -15,7 +19,8 @@ class RemoteDatabase {
                 "5:30 pm - 12:00 am","5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 11:00 pm"),
-            mutableListOf(Review("Steve","October 26, 2020",4,
+            mutableListOf(
+                Review("Steve","October 26, 2020",4,
                 "Mission Chinese Food has grown up from its scrappy " +
                         "Orchard Street days into a big, two story restaurant equipped with a pizza oven, " +
                         "a prime rib cart, and a much broader menu. " +
@@ -42,7 +47,8 @@ class RemoteDatabase {
             "Pizza, American", OperatingHours("5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:30 pm - 11:00 pm","5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:00 pm - 11:30 pm","12:00 pm - 3:00 pm, 5:00 pm - 11:00 pm"),
-            mutableListOf(Review("Steph","October 26, 2020",4,
+            mutableListOf(
+                Review("Steph","October 26, 2020",4,
                 "Five star food, two star atmosphere. " +
                         "I would definitely get takeout from this place - " +
                         "but dont think I have the energy to deal with the hipster ridiculousness again. " +
@@ -66,7 +72,8 @@ class RemoteDatabase {
                 "5:30 pm - 12:00 am","5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 11:00 pm"),
-            mutableListOf(Review("Steve","October 26, 2020",4,
+            mutableListOf(
+                Review("Steve","October 26, 2020",4,
                 "Mission Chinese Food has grown up from its scrappy " +
                         "Orchard Street days into a big, two story restaurant equipped with a pizza oven, " +
                         "a prime rib cart, and a much broader menu. " +
@@ -96,7 +103,8 @@ class RemoteDatabase {
                 "5:30 pm - 12:00 am","5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 11:00 pm"),
-            mutableListOf(Review("Steve","October 26, 2020",4,
+            mutableListOf(
+                Review("Steve","October 26, 2020",4,
                 "Mission Chinese Food has grown up from its scrappy " +
                         "Orchard Street days into a big, two story restaurant equipped with a pizza oven, " +
                         "a prime rib cart, and a much broader menu. " +
@@ -126,7 +134,8 @@ class RemoteDatabase {
                 "5:30 pm - 12:00 am","5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 11:00 pm"),
-            mutableListOf(Review("Steve","October 26, 2020",4,
+            mutableListOf(
+                Review("Steve","October 26, 2020",4,
                 "Mission Chinese Food has grown up from its scrappy " +
                         "Orchard Street days into a big, two story restaurant equipped with a pizza oven, " +
                         "a prime rib cart, and a much broader menu. " +
@@ -156,7 +165,8 @@ class RemoteDatabase {
                 "5:30 pm - 12:00 am","5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 11:00 pm"),
-            mutableListOf(Review("Steve","October 26, 2020",4,
+            mutableListOf(
+                Review("Steve","October 26, 2020",4,
                 "Mission Chinese Food has grown up from its scrappy " +
                         "Orchard Street days into a big, two story restaurant equipped with a pizza oven, " +
                         "a prime rib cart, and a much broader menu. " +
@@ -186,7 +196,8 @@ class RemoteDatabase {
                 "5:30 pm - 12:00 am","5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 11:00 pm"),
-            mutableListOf(Review("Steve","October 26, 2020",4,
+            mutableListOf(
+                Review("Steve","October 26, 2020",4,
                 "Mission Chinese Food has grown up from its scrappy " +
                         "Orchard Street days into a big, two story restaurant equipped with a pizza oven, " +
                         "a prime rib cart, and a much broader menu. " +
@@ -216,7 +227,8 @@ class RemoteDatabase {
                 "5:30 pm - 12:00 am","5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 12:00 am",
                 "12:00 pm - 4:00 pm, 5:30 pm - 11:00 pm"),
-            mutableListOf(Review("Steve","October 26, 2020",4,
+            mutableListOf(
+                Review("Steve","October 26, 2020",4,
                 "Mission Chinese Food has grown up from its scrappy " +
                         "Orchard Street days into a big, two story restaurant equipped with a pizza oven, " +
                         "a prime rib cart, and a much broader menu. " +
@@ -243,7 +255,8 @@ class RemoteDatabase {
             "Pizza, American,Burger", OperatingHours("5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:30 pm - 11:00 pm","5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:00 pm - 11:30 pm","12:00 pm - 3:00 pm, 5:00 pm - 11:00 pm"),
-            mutableListOf(Review("Steph","October 26, 2020",4,
+            mutableListOf(
+                Review("Steph","October 26, 2020",4,
                 "Five star food, two star atmosphere. " +
                         "I would definitely get takeout from this place - " +
                         "but dont think I have the energy to deal with the hipster ridiculousness again. " +
@@ -264,7 +277,8 @@ class RemoteDatabase {
             "Burger,Fast Food, Wraps", OperatingHours("5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:30 pm - 11:00 pm","5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:00 pm - 11:30 pm","12:00 pm - 3:00 pm, 5:00 pm - 11:00 pm"),
-            mutableListOf(Review("Steph","October 26, 2020",4,
+            mutableListOf(
+                Review("Steph","October 26, 2020",4,
                 "Five star food, two star atmosphere. " +
                         "I would definitely get takeout from this place - " +
                         "but dont think I have the energy to deal with the hipster ridiculousness again. " +
@@ -286,7 +300,8 @@ class RemoteDatabase {
             "Pizza, American,Pasta,Burger", OperatingHours("5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:30 pm - 11:00 pm","5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:00 pm - 11:30 pm","12:00 pm - 3:00 pm, 5:00 pm - 11:00 pm"),
-            mutableListOf(Review("Steph","October 26, 2020",4,
+            mutableListOf(
+                Review("Steph","October 26, 2020",4,
                 "Five star food, two star atmosphere. " +
                         "I would definitely get takeout from this place - " +
                         "but dont think I have the energy to deal with the hipster ridiculousness again. " +
@@ -308,7 +323,8 @@ class RemoteDatabase {
             "Italian,Pasta,Burger", OperatingHours("5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:30 pm - 11:00 pm","5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:00 pm - 11:30 pm","12:00 pm - 3:00 pm, 5:00 pm - 11:00 pm"),
-            mutableListOf(Review("Steph","October 26, 2020",4,
+            mutableListOf(
+                Review("Steph","October 26, 2020",4,
                 "Five star food, two star atmosphere. " +
                         "I would definitely get takeout from this place - " +
                         "but dont think I have the energy to deal with the hipster ridiculousness again. " +
@@ -330,7 +346,8 @@ class RemoteDatabase {
             "American,Mexican", OperatingHours("5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:30 pm - 11:00 pm","5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:00 pm - 11:30 pm","12:00 pm - 3:00 pm, 5:00 pm - 11:00 pm"),
-            mutableListOf(Review("Steph","October 26, 2020",4,
+            mutableListOf(
+                Review("Steph","October 26, 2020",4,
                 "Five star food, two star atmosphere. " +
                         "I would definitely get takeout from this place - " +
                         "but dont think I have the energy to deal with the hipster ridiculousness again. " +
@@ -352,7 +369,8 @@ class RemoteDatabase {
             "French Continental", OperatingHours("5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:30 pm - 11:00 pm","5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:00 pm - 11:30 pm","12:00 pm - 3:00 pm, 5:00 pm - 11:00 pm"),
-            mutableListOf(Review("Steph","October 26, 2020",4,
+            mutableListOf(
+                Review("Steph","October 26, 2020",4,
                 "Five star food, two star atmosphere. " +
                         "I would definitely get takeout from this place - " +
                         "but dont think I have the energy to deal with the hipster ridiculousness again. " +
@@ -374,7 +392,8 @@ class RemoteDatabase {
             "Italian , Continental", OperatingHours("5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:30 pm - 11:00 pm","5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:00 pm - 11:30 pm","12:00 pm - 3:00 pm, 5:00 pm - 11:00 pm"),
-            mutableListOf(Review("Steph","October 26, 2020",4,
+            mutableListOf(
+                Review("Steph","October 26, 2020",4,
                 "Five star food, two star atmosphere. " +
                         "I would definitely get takeout from this place - " +
                         "but dont think I have the energy to deal with the hipster ridiculousness again. " +
@@ -396,7 +415,8 @@ class RemoteDatabase {
             "Italian,Dessert,Beverages", OperatingHours("5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:30 pm - 11:00 pm","5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:00 pm - 11:30 pm","12:00 pm - 3:00 pm, 5:00 pm - 11:00 pm"),
-            mutableListOf(Review("Steph","October 26, 2020",4,
+            mutableListOf(
+                Review("Steph","October 26, 2020",4,
                 "Five star food, two star atmosphere. " +
                         "I would definitely get takeout from this place - " +
                         "but dont think I have the energy to deal with the hipster ridiculousness again. " +
@@ -418,7 +438,8 @@ class RemoteDatabase {
             "Pizza, American", OperatingHours("5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:30 pm - 11:00 pm","5:30 pm - 11:00 pm","5:30 pm - 11:00 pm",
                 "5:00 pm - 11:30 pm","12:00 pm - 3:00 pm, 5:00 pm - 11:00 pm"),
-            mutableListOf(Review("Steph","October 26, 2020",4,
+            mutableListOf(
+                Review("Steph","October 26, 2020",4,
                 "Five star food, two star atmosphere. " +
                         "I would definitely get takeout from this place - " +
                         "but dont think I have the energy to deal with the hipster ridiculousness again. " +

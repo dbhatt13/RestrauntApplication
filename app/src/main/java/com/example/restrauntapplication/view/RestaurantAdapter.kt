@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.restrauntapplication.viewModel.RestaurantViewModel
 import com.example.restrauntapplication.data.Restaurant
 import com.example.restrauntapplication.databinding.RestaurantItemBinding
 import timber.log.Timber
@@ -15,10 +16,6 @@ class RestaurantAdapter(private val viewModel: RestaurantViewModel):
     var restaurant: List<Restaurant> = emptyList()
         set(value) {
             field = value
-            // For an extra challenge, update this to use the paging library.
-
-            // Notify any registered observers that the data set has changed. This will cause every
-            // element in our RecyclerView to be invalidated.
             notifyDataSetChanged()
         }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,12 +28,12 @@ class RestaurantAdapter(private val viewModel: RestaurantViewModel):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Timber.w("onBindViewHolder")
-        val item = restaurant.get(position)
+        val item = restaurant[position]
         holder.bind(viewModel,item)
     }
 
 
-    class ViewHolder private constructor(val binding: RestaurantItemBinding) :
+    class ViewHolder private constructor(private val binding: RestaurantItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(viewModel: RestaurantViewModel, item: Restaurant) {

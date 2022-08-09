@@ -1,8 +1,8 @@
-package com.example.restrauntapplication.view
+package com.example.restrauntapplication.viewModel
 
 import androidx.lifecycle.*
 import com.example.restrauntapplication.data.Restaurant
-import com.example.restrauntapplication.data.RestaurantRepository
+import com.example.restrauntapplication.repository.RestaurantRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import timber.log.Timber
